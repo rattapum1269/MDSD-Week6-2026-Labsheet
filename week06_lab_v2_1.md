@@ -184,9 +184,59 @@ void main() {
 
 > ✅ **Checkpoint 2.1** รันไฟล์ทดสอบข้างต้น สังเกตค่าทั้ง 4 ฟิลด์ที่ `print()` ออกมาใน Debug Console ว่าตรงกับ Response Body จริงจาก Postman หรือไม่ ถ่ายภาพหน้าจอ Debug Console ที่แสดงว่าค่าทั้ง 4 ฟิลด์ถูกต้องตรงกับ JSON จริง
 
-```text
-บันทึกรูปที่นี่
 ```
+{
+    "coord": {
+        "lon": 100.5167,
+        "lat": 13.75
+    },
+    "weather": [
+        {
+            "id": 501,
+            "main": "Rain",
+            "description": "ฝนปานกลาง",
+            "icon": "10d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 29.37,
+        "feels_like": 36.37,
+        "temp_min": 28.84,
+        "temp_max": 31.08,
+        "pressure": 1008,
+        "humidity": 85,
+        "sea_level": 1008,
+        "grnd_level": 1007
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 1.89,
+        "deg": 227,
+        "gust": 1.65
+    },
+    "rain": {
+        "1h": 1.12
+    },
+    "clouds": {
+        "all": 57
+    },
+    "dt": 1789710335,
+    "sys": {
+        "type": 2,
+        "id": 2112373,
+        "country": "TH",
+        "sunrise": 1789686417,
+        "sunset": 1789730264
+    },
+    "timezone": 25200,
+    "id": 1609350,
+    "name": "กรุงเทพมหานคร",
+    "cod": 200
+}
+```
+<img width="736" height="182" alt="image" src="https://github.com/user-attachments/assets/975bcd41-1493-4496-b1d0-c908f666b6bd" />
+
 ### ขั้นตอนที่ 2.3 — 🧠 คิดเอง/ออกแบบเอง
 
 สร้างไฟล์ `lib/services/weather_service.dart` แล้วเขียน `WeatherService` ต่อจากตัวอย่างโครงเริ่มต้นด้านล่างนี้  
@@ -234,9 +284,7 @@ class WeatherService {
 
 > ✅ **Checkpoint 2.2** บันทึกผลการตรวจสอบ `statusCode` อย่างน้อย 2 กรณี (สำเร็จ และ 404) ตามเกณฑ์ข้างต้น
 
-```text
-บันทึกรูปและคำตอบที่นี่
-```
+<img width="752" height="265" alt="image" src="https://github.com/user-attachments/assets/ce87c9f1-01ee-4db1-b8fd-234f09bff339" />
 
 ### ขั้นตอนที่ 2.4 — 🧠 คิดเอง/ออกแบบเอง
 
