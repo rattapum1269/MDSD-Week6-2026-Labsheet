@@ -461,6 +461,7 @@ ElevatedButton(
 > ✅ **Checkpoint 3.1** ถ่ายภาพหน้าจอ Debug Console ที่แสดง Status Code (ควรเป็น `201 Created`) พร้อม Response Body 
 <img width="1912" height="607" alt="image" src="https://github.com/user-attachments/assets/910b87fc-98f7-4e66-9360-479e2d65cac0" />
 <img width="407" height="205" alt="image" src="https://github.com/user-attachments/assets/d2a0d904-83e5-46d6-a5af-b8b00872a6ff" />
+<img width="770" height="407" alt="image" src="https://github.com/user-attachments/assets/65df2316-1def-4423-b725-8eea99f27b4b" />
 
 ### ขั้นตอนที่ 3.2 — 🧠 คิดเอง/ออกแบบเอง
 
@@ -485,6 +486,7 @@ Future<void> updateDemoPost() async {
 
 > ✅ **Checkpoint 3.2** ถ่ายภาพหน้าจอ Debug Console ที่แสดง Status Code ของการเรียก PUT (ควรเป็น `200 OK`) 
 
+<img width="507" height="215" alt="image" src="https://github.com/user-attachments/assets/aa03a94a-d104-4f0c-95e4-7a7239a9e87f" />
 
 
 <img width="847" height="416" alt="image" src="https://github.com/user-attachments/assets/25b31936-6dca-42a8-8242-30d65e274d03" />
@@ -535,14 +537,11 @@ GET https://fakestoreapi.com/products
 
 ไม่ว่าจะเลือกแบบไหน เป้าหมายคือต้องเห็น **ผลลัพธ์จริงจาก Fake Store API** ปรากฏขึ้นมา  ถ้ารันแล้วเจอ error หรือโค้ดจาก Gemini ผิดพลาด (เช่น import ขาด, ชื่อ field ไม่ตรงกับ JSON จริง) ให้จดบันทึกข้อความ error และวิธีแก้ไขไว้ในด้านล่าง
 
-```text
-บันทึก error และการแก้ไขที่นี่
-```
+**ไม่เจอ error  Gemini วันนี้อารมดีย์ครับ**
 
 > ✅ **Checkpoint 4.2** ถ่ายภาพหน้าจอ Debug Console ที่แสดงผลลัพธ์จริงจากการเรียก `fetchAiProducts()` (เช่น รายการสินค้าที่ print ออกมา) 
-```text
-บันทึกรูปที่นี่
-```
+<img width="995" height="452" alt="image" src="https://github.com/user-attachments/assets/99d68184-0768-43f9-9fe4-752e70bfbc3d" />
+
 
 ---
 
@@ -601,9 +600,8 @@ Future<Weather> fetchWeatherWithDio(String city) async {
 2. รูปแบบการเขียน query parameters (`queryParameters: {...}`) ต่างจากการต่อ string URL เองแบบที่ทำใน `WeatherService` (ขั้นตอนที่ 2.3) 
 
 > ✅ **Checkpoint 5.1** ถ่ายภาพหน้าจอ Debug Console ที่แสดงผลลัพธ์จริงจากการเรียก `fetchWeatherWithDio()` (ค่าทั้ง 4 ฟิลด์ของ `Weather` ที่ print ออกมา หรือแสดงผลบนหน้าจอถ้าเลือกแบบที่ 2)
-```text
-บันทึกรูปที่นี่
-```
+<img width="467" height="147" alt="image" src="https://github.com/user-attachments/assets/5a429572-e70e-49a0-a032-04ce1ea3f48e" />
+
 ### ขั้นตอนที่ 5.4 — 🧠 คิดเอง/ออกแบบเอง
 
 `DioException` มีหลายชนิด (`DioExceptionType`) แต่โค้ดในขั้นตอนที่ 5.2 จัดการเฉพาะ `connectionTimeout` ด้านล่างเป็นตัวอย่างการเพิ่มเงื่อนไขให้อีก 1 ชนิด (`badResponse`) ให้ดูเป็นแนวทาง จากนั้นให้เพิ่มเงื่อนไข `else if` อีกอย่างน้อย 1 ชนิดด้วยตัวเอง โดยเลือกจาก `DioExceptionType.receiveTimeout` หรือ `DioExceptionType.connectionError` (ห้ามซ้ำกับ `badResponse` ที่ให้เป็นตัวอย่างแล้ว) พร้อมข้อความแจ้งเตือนภาษาไทยที่เหมาะสมกับสาเหตุนั้นโดยเฉพาะ (ค้นคว้าความหมายของแต่ละชนิดได้จากเอกสารของแพ็กเกจ `dio` บน pub.dev)
@@ -625,13 +623,26 @@ Future<Weather> fetchWeatherWithDio(String city) async {
 > ✅ **Checkpoint 5.2** เปรียบเทียบสั้น ๆ ระหว่าง `http` กับ `dio` อย่างน้อย 3 ประเด็น โดยอ้างอิงจากสิ่งที่สังเกตได้จริงตอนทดลองในขั้นตอนที่ 5.3 เช่น การแปลง JSON อัตโนมัติ, การกำหนด Query Parameters, และรูปแบบการจัดการ Exception (`DioException` เทียบกับการดักจับหลายชนิดแยกกันแบบ `http`)
 
 ```text
-บันทึกคำตอบที่นี่
+1. การแปลง JSON
+http ต้องใช้ jsonDecode() เพื่อแปลง response.body จาก String เป็น JSON
+แต่ Dio สามารถแปลง JSON ให้อัตโนมัติ
+2. การกำหนด Query Parameters
+http สามารถสร้าง URL และต่อ Query Parameters ด้วย String
+ส่วน Dio สามารถกำหนด Query Parameters ผ่าน queryParameters 
+3. การจัดการ Exception
+http สามารถดักจับ Exception หลายชนิด
+ส่วน Dio มี DioException และสามารถตรวจสอบประเภท
+ของข้อผิดพลาดผ่าน DioExceptionType 
 ```
 >
 > ✅ **Checkpoint 5.3** แสดงโค้ดเงื่อนไข `DioExceptionType` เพิ่มเติมที่เขียนเองในขั้นตอนที่ 5.4 
 
 ```text
-บันทึกคำตอบที่นี่
+} else if (e.type == DioExceptionType.receiveTimeout) {
+  throw Exception(
+    'เซิร์ฟเวอร์ใช้เวลาส่งข้อมูลนานเกินไป กรุณาลองใหม่อีกครั้ง',
+  );
+}
 ```
 ---
 
